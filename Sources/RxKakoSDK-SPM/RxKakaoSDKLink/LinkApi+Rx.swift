@@ -23,6 +23,8 @@ import RxKakaoSDKCommon
 import KakaoSDKLink
 import KakaoSDKTemplate
 
+import UIKit
+
 extension LinkApi: ReactiveCompatible {}
 
 /// `LinkApi`의 ReactiveX 확장입니다.

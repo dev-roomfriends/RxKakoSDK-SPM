@@ -19,6 +19,7 @@ import Alamofire
 import RxAlamofire
 import KakaoSDKCommon
 
+import UIKit
 
 //Rx extension Api
 

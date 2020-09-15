@@ -22,6 +22,8 @@ import RxKakaoSDKCommon
 
 import KakaoSDKAuth
 
+import UIKit
+
 extension Auth: ReactiveCompatible {}
 
 /// :nodoc: 내부 Rx전용 extension 입니다.

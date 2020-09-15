@@ -25,6 +25,8 @@ import RxKakaoSDKAuth
 
 import KakaoSDKStory
 
+import UIKit
+
 extension StoryApi: ReactiveCompatible {}
 
 /// `StoryApi`의 ReactiveX 확장입니다.
