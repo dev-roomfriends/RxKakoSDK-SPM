@@ -3,7 +3,7 @@
     "pins": [
       {
         "package": "Alamofire",
-        "repositoryURL": "https://github.com/Alamofire/Alamofire.git",
+        "repositoryURL": "https://github.com/Alamofire/Alamofire",
         "state": {
           "branch": null,
           "revision": "becd9a729a37bdbef5bc39dc3c702b99f9e3d046",
@@ -12,10 +12,10 @@
       },
       {
         "package": "KakaoSDK",
-        "repositoryURL": "https://github.com/dev-roomfriends/KakaoSDK-SwiftPM.git",
+        "repositoryURL": "https://github.com/minsOne/KakaoSDK-SwiftPM",
         "state": {
           "branch": "master",
-          "revision": "7469ae3f0ee790f642cf414e8fc8318df63e24fa",
+          "revision": "f33fdc6181c763b28d8f2c6530d348c4029ab2fd",
           "version": null
         }
       },
@@ -30,7 +30,7 @@
       },
       {
         "package": "RxAlamofire",
-        "repositoryURL": "https://github.com/RxSwiftCommunity/RxAlamofire.git",
+        "repositoryURL": "https://github.com/RxSwiftCommunity/RxAlamofire",
         "state": {
           "branch": null,
           "revision": "725179f104088192bd5eec9d86ff33c6bf3cdbeb",
@@ -39,7 +39,7 @@
       },
       {
         "package": "RxSwift",
-        "repositoryURL": "https://github.com/ReactiveX/RxSwift.git",
+        "repositoryURL": "https://github.com/ReactiveX/RxSwift",
         "state": {
           "branch": null,
           "revision": "002d325b0bdee94e7882e1114af5ff4fe1e96afa",
