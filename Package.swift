@@ -35,7 +35,7 @@ let package = Package(
     targets: [
         .target(
             name: RxKakaoSDK.common.name,
-            dependencies: [.kakaoSDKcommon, .rxSwift, .rxAlamofire, .alamofire],
+            dependencies: [.kakaoSDKcommon, .rxSwift, .rxCocoa, .rxAlamofire, .alamofire],
             path: RxKakaoSDK.common.path),
         .target(
             name: RxKakaoSDK.auth.name,
@@ -94,6 +94,7 @@ enum Dependency: String {
     case kakaoSDK = "KakaoSDK"
     case alamofire = "Alamofire"
     case rxSwift = "RxSwift"
+    case rxCocoa = "RxCocoa"
 
     var name: String { return rawValue }
     var dependency: Target.Dependency { .init(stringLiteral: name) }
@@ -104,6 +105,7 @@ enum Dependency: String {
 
 extension Target.Dependency {
     static var rxSwift: Self { Target.Dependency(stringLiteral: Dependency.rxSwift.name) }
+    static var rxCocoa: Self { .product(name: Dependency.rxCocoa.name, package: Dependency.rxSwift.name) }
     static var alamofire: Self { Target.Dependency(stringLiteral: Dependency.alamofire.name) }
     
     static var rxKakaoSDKcommon: Self { Target.Dependency(stringLiteral: RxKakaoSDK.common.name) }
