@@ -2,11 +2,20 @@
   "object": {
     "pins": [
       {
+        "package": "Alamofire",
+        "repositoryURL": "https://github.com/Alamofire/Alamofire.git",
+        "state": {
+          "branch": null,
+          "revision": "becd9a729a37bdbef5bc39dc3c702b99f9e3d046",
+          "version": "5.2.2"
+        }
+      },
+      {
         "package": "KakaoSDK",
-        "repositoryURL": "https://github.com/dev-roomfriends/KakaoSDK-SwiftPM.git",
+        "repositoryURL": "https://github.com/minsOne/KakaoSDK-SwiftPM",
         "state": {
           "branch": "master",
-          "revision": "7469ae3f0ee790f642cf414e8fc8318df63e24fa",
+          "revision": "f33fdc6181c763b28d8f2c6530d348c4029ab2fd",
           "version": null
         }
       },
