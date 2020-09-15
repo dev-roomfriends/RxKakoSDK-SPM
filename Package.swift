@@ -30,31 +30,32 @@ let package = Package(
         .package(url: "https://github.com/ReactiveX/RxSwift.git", from: "5.1.1"),
         .package(url: "https://github.com/RxSwiftCommunity/RxAlamofire.git", from: "5.3.1"),
         .package(name: Dependency.kakaoSDK.name, url: "https://github.com/dev-roomfriends/KakaoSDK-SwiftPM.git", .branch("master")),
+        .package(url: "https://github.com/Alamofire/Alamofire.git", .upToNextMajor(from: "5.2.0")),
     ],
     targets: [
         .target(
             name: RxKakaoSDK.common.name,
-            dependencies: [.kakaoSDKcommon, .rxSwift],
+            dependencies: [.kakaoSDKcommon, .rxSwift, .rxAlamofire, .alamofire],
             path: RxKakaoSDK.common.path),
         .target(
             name: RxKakaoSDK.auth.name,
-            dependencies: [.rxAlamofire, .rxKakaoSDKcommon, .rxSwift],
+            dependencies: [.rxAlamofire, .rxKakaoSDKcommon, .rxSwift, .rxAlamofire, .alamofire],
             path: RxKakaoSDK.auth.path),
         .target(
             name: RxKakaoSDK.link.name,
-            dependencies: [.rxKakaoSDKcommon, .rxSwift],
+            dependencies: [.rxKakaoSDKcommon, .rxSwift, .rxAlamofire, .alamofire],
             path: RxKakaoSDK.link.path),
         .target(
             name: RxKakaoSDK.user.name,
-            dependencies: [.rxKakaoSDKcommon, .rxKakaoSDKAuth, .rxSwift],
+            dependencies: [.rxKakaoSDKcommon, .rxKakaoSDKAuth, .rxSwift, .rxAlamofire, .alamofire],
             path: RxKakaoSDK.user.path),
         .target(
             name: RxKakaoSDK.talk.name,
-            dependencies: [.rxKakaoSDKcommon, .rxKakaoSDKAuth, .rxSwift],
+            dependencies: [.rxKakaoSDKcommon, .rxKakaoSDKAuth, .rxSwift, .rxAlamofire, .alamofire],
             path: RxKakaoSDK.talk.path),
         .target(
             name: RxKakaoSDK.story.name,
-            dependencies: [.rxKakaoSDKcommon, .rxKakaoSDKAuth, .rxSwift],
+            dependencies: [.rxKakaoSDKcommon, .rxKakaoSDKAuth, .rxSwift, .rxAlamofire, .alamofire],
             path: RxKakaoSDK.story.path),
     ]
 )
@@ -91,6 +92,8 @@ enum KakaoSDK: String {
 enum Dependency: String {
     case rxAlamofire = "RxAlamofire"
     case kakaoSDK = "KakaoSDK"
+    case alamofire = "Alamofire"
+    case rxSwift = "RxSwift"
 
     var name: String { return rawValue }
     var dependency: Target.Dependency { .init(stringLiteral: name) }
@@ -100,7 +103,9 @@ enum Dependency: String {
 }
 
 extension Target.Dependency {
-    static var rxSwift: Self { Target.Dependency(stringLiteral: "RxSwift") }
+    static var rxSwift: Self { Target.Dependency(stringLiteral: Dependency.rxSwift.name) }
+    static var alamofire: Self { Target.Dependency(stringLiteral: Dependency.alamofire.name) }
+    
     static var rxKakaoSDKcommon: Self { Target.Dependency(stringLiteral: RxKakaoSDK.common.name) }
     static var rxKakaoSDKAuth: Self { Target.Dependency(stringLiteral: RxKakaoSDK.auth.name) }
     static var rxAlamofire: Self { Target.Dependency(stringLiteral: Dependency.rxAlamofire.name) }
