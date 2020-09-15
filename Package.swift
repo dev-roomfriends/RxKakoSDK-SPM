@@ -27,33 +27,34 @@ let package = Package(
             targets: [RxKakaoSDK.story.name]),
     ],
     dependencies: [
+        .package(url: "https://github.com/ReactiveX/RxSwift.git", from: "5.1.1"),
         .package(url: "https://github.com/RxSwiftCommunity/RxAlamofire.git", from: "5.3.1"),
         .package(name: Dependency.kakaoSDK.name, url: "https://github.com/dev-roomfriends/KakaoSDK-SwiftPM.git", .branch("master")),
     ],
     targets: [
         .target(
             name: RxKakaoSDK.common.name,
-            dependencies: [.kakaoSDKcommon],
+            dependencies: [.kakaoSDKcommon, .rxSwift],
             path: RxKakaoSDK.common.path),
         .target(
             name: RxKakaoSDK.auth.name,
-            dependencies: [.rxAlamofire, .rxKakaoSDKcommon],
+            dependencies: [.rxAlamofire, .rxKakaoSDKcommon, .rxSwift],
             path: RxKakaoSDK.auth.path),
         .target(
             name: RxKakaoSDK.link.name,
-            dependencies: [.rxKakaoSDKcommon],
+            dependencies: [.rxKakaoSDKcommon, .rxSwift],
             path: RxKakaoSDK.link.path),
         .target(
             name: RxKakaoSDK.user.name,
-            dependencies: [.rxKakaoSDKcommon, .rxKakaoSDKAuth],
+            dependencies: [.rxKakaoSDKcommon, .rxKakaoSDKAuth, .rxSwift],
             path: RxKakaoSDK.user.path),
         .target(
             name: RxKakaoSDK.talk.name,
-            dependencies: [.rxKakaoSDKcommon, .rxKakaoSDKAuth],
+            dependencies: [.rxKakaoSDKcommon, .rxKakaoSDKAuth, .rxSwift],
             path: RxKakaoSDK.talk.path),
         .target(
             name: RxKakaoSDK.story.name,
-            dependencies: [.rxKakaoSDKcommon, .rxKakaoSDKAuth],
+            dependencies: [.rxKakaoSDKcommon, .rxKakaoSDKAuth, .rxSwift],
             path: RxKakaoSDK.story.path),
     ]
 )
@@ -99,6 +100,7 @@ enum Dependency: String {
 }
 
 extension Target.Dependency {
+    static var rxSwift: Self { Target.Dependency(stringLiteral: "RxSwift") }
     static var rxKakaoSDKcommon: Self { Target.Dependency(stringLiteral: RxKakaoSDK.common.name) }
     static var rxKakaoSDKAuth: Self { Target.Dependency(stringLiteral: RxKakaoSDK.auth.name) }
     static var rxAlamofire: Self { Target.Dependency(stringLiteral: Dependency.rxAlamofire.name) }
