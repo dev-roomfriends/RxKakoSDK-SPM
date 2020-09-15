@@ -20,6 +20,7 @@ import RxAlamofire
 import KakaoSDKCommon
 
 import UIKit
+import RxCocoa
 
 //Rx extension Api
 
