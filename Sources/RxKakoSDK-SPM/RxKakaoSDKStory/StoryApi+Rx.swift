@@ -144,7 +144,7 @@ extension Reactive where Base: StoryApi {
             .compose(AUTH.rx.checkErrorAndRetryComposeTransformer())
             .map({ (response, data) -> String in
                 if 200 ..< 300 ~= response.statusCode {
-                    if let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any], let postId = json?["id"] as? String {
+                    if let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any], let postId = json["id"] as? String {
                         return postId
                     } else {
                         throw SdkError(reason: .Unknown, message: "No post identifier in the response body. But posting is successful.")
@@ -186,7 +186,7 @@ extension Reactive where Base: StoryApi {
             .compose(AUTH.rx.checkErrorAndRetryComposeTransformer())
             .map({ (response, data) -> String in
                 if 200 ..< 300 ~= response.statusCode {
-                    if let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any], let postId = json?["id"] as? String {
+                    if let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any], let postId = json["id"] as? String {
                         return postId
                     } else {
                         throw SdkError(reason: .Unknown, message: "No post identifier in the response body. But posting is successful.")
@@ -224,7 +224,7 @@ extension Reactive where Base: StoryApi {
             .compose(AUTH.rx.checkErrorAndRetryComposeTransformer())
             .map({ (response, data) -> String in
                 if 200 ..< 300 ~= response.statusCode {
-                    if let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any], let postId = json?["id"] as? String {
+                    if let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any], let postId = json["id"] as? String {
                         return postId
                     } else {
                         throw SdkError(reason: .Unknown, message: "No post identifier in the response body. But posting is successful.")

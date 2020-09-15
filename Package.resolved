@@ -12,10 +12,10 @@
       },
       {
         "package": "KakaoSDK",
-        "repositoryURL": "https://github.com/minsOne/KakaoSDK-SwiftPM",
+        "repositoryURL": "https://github.com/dev-roomfriends/KakaoSDK-SwiftPM.git",
         "state": {
           "branch": "master",
-          "revision": "f33fdc6181c763b28d8f2c6530d348c4029ab2fd",
+          "revision": "7469ae3f0ee790f642cf414e8fc8318df63e24fa",
           "version": null
         }
       },

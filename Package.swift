@@ -5,7 +5,7 @@ import PackageDescription
 
 let package = Package(
     name: "RxKakoSDK",
-    platforms: [.iOS(.v11)],
+    platforms: [.iOS(.v11), .macOS(.v10_12)],
     products: [
         .library(
             name: RxKakaoSDK.common.name,
@@ -29,33 +29,33 @@ let package = Package(
     dependencies: [
         .package(url: "https://github.com/ReactiveX/RxSwift.git", from: "5.1.1"),
         .package(url: "https://github.com/RxSwiftCommunity/RxAlamofire.git", from: "5.3.1"),
-        .package(name: Dependency.kakaoSDK.name, url: "https://github.com/minsOne/KakaoSDK-SwiftPM", .branch("master")),
+        .package(name: Dependency.kakaoSDK.name, url: "https://github.com/dev-roomfriends/KakaoSDK-SwiftPM.git", .branch("master")),
         .package(url: "https://github.com/Alamofire/Alamofire.git", .upToNextMajor(from: "5.2.0")),
     ],
     targets: [
         .target(
             name: RxKakaoSDK.common.name,
-            dependencies: [.kakaoSDKcommon, .rxSwift, .rxCocoa, .rxAlamofire, .alamofire],
+            dependencies: [.kakaoSDKcommon, .rxSwift, .rxAlamofire, .alamofire],
             path: RxKakaoSDK.common.path),
         .target(
             name: RxKakaoSDK.auth.name,
-            dependencies: [.rxAlamofire, .rxKakaoSDKcommon, .rxSwift, .rxAlamofire, .alamofire],
+            dependencies: [.rxAlamofire, .kakaoSDKAuth, .rxKakaoSDKcommon, .rxSwift, .rxAlamofire, .alamofire],
             path: RxKakaoSDK.auth.path),
         .target(
             name: RxKakaoSDK.link.name,
-            dependencies: [.rxKakaoSDKcommon, .rxSwift, .rxAlamofire, .alamofire],
+            dependencies: [.rxKakaoSDKcommon, .kakaoSDKLink, .rxSwift, .rxAlamofire, .alamofire, .kakaoSDKLink],
             path: RxKakaoSDK.link.path),
         .target(
             name: RxKakaoSDK.user.name,
-            dependencies: [.rxKakaoSDKcommon, .rxKakaoSDKAuth, .rxSwift, .rxAlamofire, .alamofire],
+            dependencies: [.rxKakaoSDKcommon, .kakaoSDKUser, .rxKakaoSDKAuth, .rxSwift, .rxAlamofire, .alamofire],
             path: RxKakaoSDK.user.path),
         .target(
             name: RxKakaoSDK.talk.name,
-            dependencies: [.rxKakaoSDKcommon, .rxKakaoSDKAuth, .rxSwift, .rxAlamofire, .alamofire],
+            dependencies: [.rxKakaoSDKcommon, .kakaoSDKTalk, .rxKakaoSDKAuth, .rxSwift, .rxAlamofire, .alamofire],
             path: RxKakaoSDK.talk.path),
         .target(
             name: RxKakaoSDK.story.name,
-            dependencies: [.rxKakaoSDKcommon, .rxKakaoSDKAuth, .rxSwift, .rxAlamofire, .alamofire],
+            dependencies: [.rxKakaoSDKcommon, .kakaoSDKStory, .rxKakaoSDKAuth, .rxSwift, .rxAlamofire, .alamofire],
             path: RxKakaoSDK.story.path),
     ]
 )
@@ -115,5 +115,9 @@ extension Target.Dependency {
     
     static var kakaoSDKcommon: Self { .product(name: KakaoSDK.common.name, package: Dependency.kakaoSDK.name) }
     static var kakaoSDKAuth: Self { .product(name: KakaoSDK.auth.name, package: Dependency.kakaoSDK.name) }
+    static var kakaoSDKLink: Self { .product(name: KakaoSDK.link.name, package: Dependency.kakaoSDK.name) }
+    static var kakaoSDKTalk: Self { .product(name: KakaoSDK.talk.name, package: Dependency.kakaoSDK.name) }
+    static var kakaoSDKUser: Self { .product(name: KakaoSDK.user.name, package: Dependency.kakaoSDK.name) }
+    static var kakaoSDKStory: Self { .product(name: KakaoSDK.story.name, package: Dependency.kakaoSDK.name) }
     static var kakaoSDKTemplate: Self { Target.Dependency(stringLiteral: KakaoSDK.template.name) }
 }
