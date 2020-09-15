@@ -38,7 +38,7 @@ let package = Package(
             path: RxKakaoSDK.common.path),
         .target(
             name: RxKakaoSDK.auth.name,
-            dependencies: [.rxAlamofire, .kakaoSDKAuth, .rxKakaoSDKcommon, .rxSwift, .rxAlamofire],
+            dependencies: [.rxAlamofire, .kakaoSDKAuth, .rxKakaoSDKcommon, .rxSwift],
             path: RxKakaoSDK.auth.path),
         .target(
             name: RxKakaoSDK.link.name,
