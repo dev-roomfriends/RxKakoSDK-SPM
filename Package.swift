@@ -5,7 +5,7 @@ import PackageDescription
 
 let package = Package(
     name: "RxKakoSDK",
-    platforms: [.iOS(.v11), .macOS(.v10_12)],
+    platforms: [.iOS(.v11)],
     products: [
         .library(
             name: RxKakaoSDK.common.name,
